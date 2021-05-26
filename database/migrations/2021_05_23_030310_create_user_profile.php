@@ -13,11 +13,11 @@ class CreateUserProfile extends Migration
      */
     public function up()
     {
-        Schema::create('user_profile', function (Blueprint $table) {
+        Schema::create('user_profiles', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('user_id');
             $table->integer('gender')->nullable();
-            $table->bigInteger('identication_no')->nullable();
+            $table->bigInteger('identification_no')->nullable();
             $table->bigInteger('phone_no')->nullable();
             $table->text('address')->nullable();
             $table->timestamps();
@@ -31,6 +31,6 @@ class CreateUserProfile extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_profile');
+        Schema::dropIfExists('user_profiles');
     }
 }

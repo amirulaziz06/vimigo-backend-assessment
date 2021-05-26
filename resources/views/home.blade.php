@@ -21,7 +21,8 @@
     </div>
 </div>
 
-<a href="{{ url('/user') }}" class="btn btn-xs btn-info pull-right">User</a>
+<a href="{{ url('/user') }}" class="btn btn-xs btn-primary pull-right" style="width:20%">User</a>
+<a href="{{ url('/user-profile') }}" class="btn btn-xs btn-primary pull-right" style="width:20%">API : User Profile</a>
 {{-- <button type="user" name="user">User</button> --}}
 
 {{-- <div class="m-portlet m-portlet--mobile">

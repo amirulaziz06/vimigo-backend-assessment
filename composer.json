@@ -14,6 +14,7 @@
         "laravel/passport": "7.5.1",
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "~5.0",
+        "lcobucci/jwt": "3.3.3",
         "maatwebsite/excel": "^3.1",
         "tucker-eric/eloquentfilter": "^2.4"
     },

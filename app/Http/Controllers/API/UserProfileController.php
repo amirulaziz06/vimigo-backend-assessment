@@ -21,10 +21,8 @@ class UserProfileController extends Controller
     public function index()
     {
         try {
-            dd('yayy');
             $userProfile = UserProfile::all();
-            // return UserProfileResource::collection($userProfile);
-            return response([ 'profile' => UserProfileResource::collection($userProfile), 'message' => 'Retrieved successfully'], 200);
+            return $userProfile;
         } catch (Exception $exception){
             return $exception->getMessage();
         }
@@ -35,10 +33,9 @@ class UserProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(StoreUserProfile $request)
+    public function create(Request $request)
     {
-        $userProfile = UserProfile::create($request->all());
-        return response([ 'profile' => new UserProfileResource($userProfile), 'message' => 'Created successfully'], 200);
+        // 
     }
 
     /**
@@ -47,9 +44,14 @@ class UserProfileController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUserProfile $request)
     {
-        //
+        try {
+            $userProfile = UserProfile::create($request->all());
+            return response([ 'profile' => new UserProfileResource($userProfile), 'message' => 'Created successfully'], 200);
+        } catch (Exception $exception){
+            return $exception->getMessage();
+        }
     }
 
     /**
@@ -60,7 +62,12 @@ class UserProfileController extends Controller
      */
     public function show($id)
     {
-        //
+        try {
+            $userProfile = UserProfile::findOrFail($id);
+            return new UserProfileResource($userProfile);
+        } catch (Exception $exception){
+            return $exception->getMessage();
+        }
     }
 
     /**
@@ -71,7 +78,7 @@ class UserProfileController extends Controller
      */
     public function edit($id)
     {
-        //
+        // 
     }
 
     /**
@@ -83,7 +90,13 @@ class UserProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $userProfile = UserProfile::where('user_id', $id)->first();
+            $userProfile->update($request->all());
+            return new UserProfileResource($userProfile);
+        } catch (Exception $exception){
+            return $exception->getMessage();
+        }
     }
 
     /**
@@ -94,6 +107,14 @@ class UserProfileController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $userProfile = UserProfile::where('user_id', $id)->first();
+            $userProfile->delete();
+
+            $response = ['user' => $userProfile, 'message' => 'delete profile', 'status' => true];
+            return response($response, 200);
+        } catch (Exception $exception){
+            return $exception->getMessage();
+        }
     }
 }

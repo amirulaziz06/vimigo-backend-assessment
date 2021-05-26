@@ -13,7 +13,7 @@ class StoreUserProfile extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -26,7 +26,7 @@ class StoreUserProfile extends FormRequest
         return [
             'user_id'           => 'required|integer',
             'gender'            => 'required|integer',
-            'identication_no'   => 'required|integer',
+            'identification_no'   => 'required|integer',
             'phone_no'          => 'required|integer',
             'address'           => 'required|string',
         ];

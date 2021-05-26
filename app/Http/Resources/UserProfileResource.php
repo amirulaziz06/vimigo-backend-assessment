@@ -14,14 +14,14 @@ class UserProfileResource extends ResourceCollection
      */
     public function toArray($request)
     {
-        // return parent::toArray($request);
+        $user = $this->first();
         return [
-            'id'        => $this->id,
-            'user_id'   => $this->user_id,
-            'gender'    => $this->gender,
-            'identification_no' => $this->identification_no,
-            'phone_no' => $this->phone_no,
-            'address'  => $this->address,
+            'id'        => $user->id ?? '-',
+            'user_id'   => $user->user_id ?? '-',
+            'gender'    => $user->gender ?? '-',
+            'identification_no' => $user->identification_no ?? '-',
+            'phone_no' => $user->phone_no ?? '-',
+            'address'  => $user->address ?? '-',
         ];
     }
 }
