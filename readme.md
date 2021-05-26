@@ -1,8 +1,3 @@
-Please use user-assesment.xlsx as excel sample
-
-API create/delete/update/get -> https://www.getpostman.com/collections/a96b2cbccf9cb71d1172
-
-
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
 <p align="center">
